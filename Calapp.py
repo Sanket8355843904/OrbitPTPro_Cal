@@ -140,12 +140,14 @@ if selected_items:
 
         # Set margin to avoid overlap with header
         y = 660
-        c.setFont("Helvetica-Bold", 16)
+        c.setFont("Helvetica-Bold", 18)
+        c.setFillColor(colors.HexColor("#1b4332"))
         c.drawCentredString(300, y, "Quotation Summary")
         y -= 40
 
-        # Customer Info
+        # Customer Info Section
         c.setFont("Helvetica", 10)
+        c.setFillColor(colors.black)
         c.drawString(50, y, f"Customer Name: {customer_name}")
         y -= 15
         c.drawString(50, y, f"Address: {customer_address}")
@@ -162,8 +164,8 @@ if selected_items:
 
         table = Table(data, colWidths=[370, 100])
         table.setStyle(TableStyle([
-            ("BACKGROUND", (0, 0), (-1, 0), colors.lightgrey),
-            ("TEXTCOLOR", (0, 0), (-1, 0), colors.black),
+            ("BACKGROUND", (0, 0), (-1, 0), colors.HexColor("#2d6a4f")),
+            ("TEXTCOLOR", (0, 0), (-1, 0), colors.whitesmoke),
             ("ALIGN", (0, 0), (-1, -1), "LEFT"),
             ("FONTNAME", (0, 0), (-1, 0), "Helvetica-Bold"),
             ("FONTNAME", (0, 1), (-1, -1), "Helvetica"),
@@ -175,8 +177,9 @@ if selected_items:
         table.wrapOn(c, 50, y)
         table.drawOn(c, 50, y - len(data) * 18)
 
-        summary_y = y - len(data) * 18 - 40
-        c.setFont("Helvetica", 11)
+        summary_y = y - len(data) * 18 - 50
+        c.setFont("Helvetica-Bold", 12)
+        c.setFillColor(colors.HexColor("#000000"))
         c.drawString(50, summary_y, f"Total Price: Rs{total_price:,.0f}")
         c.drawString(50, summary_y - 20, f"Discount Applied: Rs{selected_discount:,.0f}")
         c.drawString(50, summary_y - 40, f"Discounted Price (All Inclusive): Rs{final_price:,.0f}")
